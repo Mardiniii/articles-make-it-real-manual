@@ -1,13 +1,21 @@
 // Este archivo se usa para guardar los datos dentro del formulario creando el nuevo objeto, esconder el modal y actualizar la tabla
-$('#myModal').modal('hide');
-$('#articles_table').append('<tr> \
-<td><%= @article.title %></td> \
-<td><%= @article.author %></td> \
-<td class="text-center"><%= @article.date %></td> \
-<td class="text-center"><%= @article.published %></td> \
-<td><%= @article.post %></td> \
-<td class="text-center"><%= link_to "Show", @article, :class => "button btn btn-primary" %></td> \
-<td class="text-center"><%= link_to "Edit", edit_article_path(@article), :class => "button btn btn-warning", remote: true %></td> \
-<td class="text-center"><%= link_to "Destroy", @article, method: :delete, data: { confirm: "Are you sure?" }, :class => "button btn btn-danger" %></td> \
-</tr>');
+<% if @article.errors.any? %>
+	$('.alert-danger').remove();
+    <% @article.errors.full_messages.each do |message| %>
+    	$('.modal-body').prepend('<div class="alert alert-danger"><%= message %></div>');
+    <% end %>
+<% else %>
+	$('#myModal').modal('hide');
+	$('#articles_table').append('<tr> \
+	<td><%= @article.title %></td> \
+	<td><%= @article.author %></td> \
+	<td class="text-center"><%= @article.date %></td> \
+	<td class="text-center"><%= @article.published %></td> \
+	<td><%= @article.post %></td> \
+	<td class="text-center"><%= link_to "Show", @article, :class => "button btn btn-primary" %></td> \
+	<td class="text-center"><%= link_to "Edit", edit_article_path(@article), :class => "button btn btn-warning", remote: true %></td> \
+	<td class="text-center"><%= link_to "Destroy", @article, method: :delete, data: { confirm: "Are you sure?" }, :class => "button btn btn-danger" %></td> \
+	</tr>');
+<% end %>
+
 
