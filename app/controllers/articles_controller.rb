@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
 	
 	def index
 		@articles = Article.all
+		@article = Article.new
 	end
 
 	def show
@@ -14,17 +15,14 @@ class ArticlesController < ApplicationController
 
 	def create
 		@article = Article.create(article_params)
-        redirect_to @article, notice: 'Article was successfully created.'
-
 	end
 
 	def edit
+		@article = Article.find(params[:id])
 	end
 
 	def update
 		Article.find(params[:id]).update(article_params)
-		redirect_to @article, notice: 'Article was successfully updated.'
-
 	end
 
 	def destroy
