@@ -29,8 +29,6 @@ class ArticlesController < ApplicationController
 
 	def destroy
 		Article.find(params[:id]).destroy
- 		redirect_to articles_url, notice: 'Article was successfully destroyed.'
-
 	end
 
 	#Prevent the reception of dangerous params
