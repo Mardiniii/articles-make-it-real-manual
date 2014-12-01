@@ -22,7 +22,9 @@ class ArticlesController < ApplicationController
 	end
 
 	def update
-		Article.find(params[:id]).update(article_params)
+		@articles = Article.all
+		@article = Article.find(params[:id])
+		@article.update(article_params)
 	end
 
 	def destroy

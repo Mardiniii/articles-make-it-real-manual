@@ -1,2 +1,9 @@
-alert("Ha sido editado");
-$('#myModalEdit').modal('hide');
+<% if @article.errors.any? %>
+	$('.alert-danger').remove();
+    <% @article.errors.full_messages.each do |message| %>
+    	$('.modal-body').prepend('<div class="alert alert-danger"><%= message %></div>');
+    <% end %>
+<% else %>
+	$('#myModalEdit').modal('hide').remove();
+	$('#articles_table tbody').html('').append('<%= j render "article_index" %>');
+<% end %>

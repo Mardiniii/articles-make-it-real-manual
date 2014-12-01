@@ -1,0 +1,20 @@
+<% @articles.each do |article| %>
+  <tr>
+    <td><%= article.title %></td>
+    <td><%= article.author %></td>
+    <td class="text-center"><%= article.date %></td>
+
+    <% if article.published %>
+      <td class="text-center success">YES</td>
+    <% else %>
+      <td class="text-center danger">NO</td>
+    <% end %>
+    
+    
+    <td><%= article.post %></td>
+    <td class="text-center"><%= link_to 'Show', article, :class => "button btn btn-primary", remote: true
+     %></td>
+    <td class="text-center"><%= link_to 'Edit', edit_article_path(article), :class => "button btn btn-warning", remote: true %></td>
+    <td class="text-center"><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' }, :class => "button btn btn-danger" %></td>
+  </tr>
+<% end %>
