@@ -1,25 +1,27 @@
-<%= form_for(@article, remote: true) do |f| %>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br>
-    <%= f.text_field :author %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :published %><br>
-    <%= f.check_box :published %>
-  </div>
-  <div class="field">
-    <%= f.label :post %><br>
-    <%= f.text_area :post %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Upload Article', :class => 'btn btn-success' %>
-  </div>
-<% end %>
+<form role="form">
+  <%= form_for(@article, remote: true) do |f| %>
+    <div class="field form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, :class => "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :author %><br>
+      <%= f.text_field :author, :class => "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :date %><br>
+      <%= f.date_select :date, :class => "form-control" %>
+    </div>
+    <div class="field form-group">
+      <%= f.check_box :published %>
+      <%= f.label :published %>
+    </div>
+    <div class="field form-group">
+      <%= f.label :post %> 
+      <%= f.text_area :post, :class => "form-control" %>
+    </div>
+    <div class="actions form-group">
+      <%= f.submit 'Upload Article', :class => 'btn btn-success' %>
+    </div>
+  <% end %>
+</form>
